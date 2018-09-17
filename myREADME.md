@@ -20,6 +20,11 @@ python
 >>>>>>> dev
 asdasd
 
+<<<<<<< HEAD
 python
 hello
 123456
+=======
+
+>>>>>>> dev
+sadasd
