@@ -22,5 +22,3 @@ asdasd
 
 python
 hello
-
-
