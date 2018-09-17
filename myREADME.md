@@ -13,4 +13,11 @@ dev
 
 
 asdasdasdasdasdsaaaaaaaaaaaaaaaaaa
+<<<<<<< HEAD
 ccccccccccccccccccccccccccccccccccccccc
+=======
+
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+>>>>>>> dev
+asdasd
