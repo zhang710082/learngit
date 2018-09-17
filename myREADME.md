@@ -20,6 +20,6 @@ python
 >>>>>>> dev
 asdasd
 
-hello
+python
 
 
