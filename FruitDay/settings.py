@@ -1,3 +1,4 @@
+123
 """
 Django settings for FruitDay project.
 
