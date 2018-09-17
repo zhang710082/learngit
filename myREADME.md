@@ -9,8 +9,13 @@ python
 45
 
 dev
+<<<<<<< HEAD
 
 
 
 0000
 121
+=======
+python
+>>>>>>> dev
+asdasd
