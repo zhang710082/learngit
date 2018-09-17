@@ -12,19 +12,4 @@ dev
 <<<<<<< HEAD
 
 
-
-0000
-121
-=======
-python
->>>>>>> dev
-asdasd
-
-<<<<<<< HEAD
-python
-hello
-123456
-=======
-
->>>>>>> dev
-sadasd
+asdasdasdasdasdsaaaaaaaaaaaaaaaaaa
