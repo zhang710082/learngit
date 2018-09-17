@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">JQUERY AJAX GET</button>
+    <div id="show"></div>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $('#btn').click(function(){
+                var date = 'name=uname&age=uage'
+                $.get('/10_server/',date,function(data){
+                    $('#show').html(data)
+                },'html')
+            })
+        })
+    </script>
+</body>
+</html>

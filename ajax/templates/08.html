@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">按钮</button>
+    <div id="show"></div>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $('#btn').click(function(){
+                $('#show').load('/09_server/','uname=sf.zh&uage=80',function(restext,statustext){
+                    $(this).html(restext+'123')
+                    console.log(restext)
+                    console.log(statustext)
+                })
+            })
+        })
+    </script>
+</body>
+</html>

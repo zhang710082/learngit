@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% csrf_token %}
+    <input type="text" id="i1">
+    <span id="i2"></span>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+{#        $(function(){#}
+{#            $('#i1').blur(function(){#}
+{#                $.ajax({#}
+{#                    url:'/14_server/',#}
+{#                    type:'post',#}
+{#                    data:{#}
+{#                        value:$('#i1').val(),#}
+{#                        csrfmiddlewaretoken:$("[name='csrfmiddlewaretoken']").val()#}
+{#                    },#}
+{#                    dataType:'text',#}
+{#                    success:function(data){#}
+{#                        $('#i2').html(data)#}
+{#                    }#}
+{#                })#}
+{#            })#}
+{#        })#}
+{#        $(function(){#}
+{#            $('#i1').blur(function(){#}
+{#                $('#i2').load('/14_server/','value='+$('#i1').val(),function(data){#}
+{#                    $('#i2').html('欢迎'+data)#}
+{#                })#}
+{#            })#}
+{#        })#}
+{#        $(function(){#}
+{#            $('#i1').blur(function(){#}
+{#                $.get('/14_server','value='+$('#i1').val(),function(data){#}
+{#                    $('#i2').html('欢迎'+data)#}
+{#                },'text')#}
+{#            })#}
+{#        })#}
+        $(function(){
+            $('#i1').blur(function(){
+                $.post('/14_server/','value='+this.value+"&csrfmiddlewaretoken="+$("[name='csrfmiddlewaretoken']").val(),function(data){
+                    $('#i2').html("欢迎"+data)
+                })
+            })
+        })
+    </script>
+</body>
+</html>

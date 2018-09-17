@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <p>
+            姓名：<input type="text" id="uname">
+        </p>
+        <p>
+            密码：<input type="password" id="upwd">
+        </p>
+        <p>
+            <input type="button" value="POST请求" id="btnpost">
+        </p>
+    </div>
+    <div id="show"></div>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script src="/static/js/01.js"></script>
+    <script src="/static/js/jquery.cookie.js"></script>
+    <script>
+        $(function(){
+            $('#btnpost').click(function(){
+                var xhr = createxhr()
+                xhr.open('post','/04_server/',true)
+                xhr.onreadystatechange=function(){
+                    if(xhr.status==200&&xhr.readyState==4){
+                        $('#show').html(xhr.responseText)
+                    }
+                }
+                var csrf = $.cookie('csrftoken');
+                var uname=$('#uname').val()
+                var upwd=$('#upwd').val()
+                var params = 'uname='+uname+'&upwd='+upwd+'&csrfmiddlewaretoken='+csrf
+                xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded")
+                xhr.send(params)
+            })
+        });
+    </script>
+</body>
+</html>

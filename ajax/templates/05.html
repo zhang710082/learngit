@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        {% csrf_token %}
+        <p>
+            用户名：<input type="text" id="uname">
+        </p>
+    </div>
+        <p>
+            <button id="btn">post请求</button>
+        </p>
+</body>
+<script src="/static/js/01.js"></script>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            xhr = createxhr()
+            xhr.open('post','/05_server/',true)
+            xhr.onreadystatechange=function(){
+                if(xhr.status==200&&xhr.readyState==4){
+                    alert(xhr.responseText)
+                }
+            }
+            xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+            var uname = $('#uname').val()
+            var csrf = $('[name=csrfmiddlewaretoken]').val()
+            xhr.send('uname='+uname+'&csrfmiddlewaretoken='+csrf)
+
+        })
+    })
+</script>
+</html>

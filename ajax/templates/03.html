@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="uname">
+<button onclick="btn()">发送</button>
+<div id="i1"></div>
+<script src="/static/js/01.js"></script>
+<script>
+    function btn(){
+        var value = document.getElementById('uname').value
+        var xhr = createxhr();
+        xhr.open('get','/03_gettext/?value='+value,true);
+        xhr.onreadystatechange = function(){
+            if(xhr.status == 200 && xhr.readyState == 4){
+                var text = xhr.responseText
+                document.getElementById('i1').innerHTML = text
+            }
+        }
+        xhr.send(null)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/07_rigister/" method="post">
+    {% csrf_token %}
+    <p>用户名：<input type="text" id="name" name="uname">
+        <span id="uname-show"></span>
+    </p>
+    <p><input type="submit"></p>
+    <script src="/static/js/01.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        $(function(){
+            $('#name').blur(function(){
+{#                var xhr = createxhr();#}
+{#                var uname = this.value;#}
+{#                var url = '/07_server/?uname='+uname;#}
+{#                xhr.open('get',url,true);#}
+{#                xhr.onreadystatechange = function(){#}
+{#                    if(xhr.status==200&&xhr.readyState==4){#}
+{#                        $('#uname-show').html(xhr.responseText)#}
+{#                    }#}
+{#                };#}
+{#                xhr.send(null)#}
+
+
+                var xhr = createxhr();
+                xhr.open('post','/07_server/',true);
+                xhr.onreadystatechange=function(){
+                    if(xhr.readyState==4&&xhr.status==200){
+                        $('#uname-show').html(xhr.responseText)
+                    }
+                };
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                var uname = this.value;
+                var csrf = $("[name='csrfmiddlewaretoken']").val();
+                xhr.send('uname='+uname+'&csrfmiddlewaretoken='+csrf)
+
+            })
+        })
+    </script>
+</form>
+</body>
+</html>

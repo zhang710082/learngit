@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<select id="btn"></select>
+<select id="city">
+</select>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<script>
+    function pro(){
+        $.ajax({
+            url:'/12_server/',
+            type:'get',
+            dataType:'json',
+            async:false,
+            success:function(data){
+                console.log(typeof(data));
+                html = "";
+                $.each(data,function(i,obj){
+                    console.log(obj);
+                    html += "<option value="+obj.pk+">"+obj.fields.name+"</option>"
+                    console.log(obj.pk)
+                });
+                $('#btn').html(html)
+            }
+        })
+    }
+    function loadcity(pid){
+        $.ajax({
+            url:'/13_server/',
+            type:'get',
+            data:'id='+pid,
+            dataType:'json',
+            success:function(data){
+                html1 = "";
+                $.each(data,function(i,obj){
+                    html1+="<option value="+obj.pk+">"+obj.fields.name+"</option>"
+                });
+                $('#city').html(html1)
+            }
+        })
+    }
+    $(function(){
+        pro();
+        loadcity($('#btn').val())
+        $('#btn').change(function(){
+            loadcity($('#btn').val())
+{#            dic = {#}
+{#                "id":$('#btn').val()#}
+{#            };#}
+{#            $.get('/13_server/',dic,function(data){#}
+{#                html1 = "";#}
+{#                $.each(data,function(i,obj){#}
+{#                    html1+="<option value="+obj.pk+">"+obj.fields.name+"</option>"#}
+{#                });#}
+{#                $('#city').html(html1)#}
+{#            },'json')#}
+        })
+    })
+</script>
+</body>
+</html>

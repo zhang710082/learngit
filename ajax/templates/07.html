@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn">发送ajax请求</button>
+<table id="i1">
+    <tr>
+        <th>编号</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>电话号码</th>
+        <th>邮箱</th>
+    </tr>
+</table>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<script src="/static/js/01.js"></script>
+<script>
+{#    var obj = {#}
+{#        "name":"范冰冰",#}
+{#        "age":40,#}
+{#        "gender":"女"#}
+{#    }#}
+{#    console.log('姓名'+obj.name)#}
+{#    var arr = [#}
+{#        {#}
+{#            "name":"范冰冰",#}
+{#            "age":40,#}
+{#            "gender":"女"#}
+{#        },#}
+{#        {#}
+{#            "name":"李晨",#}
+{#            "age":30,#}
+{#            "gender":"男"#}
+{#        }#}
+{#    ]#}
+{#    $(arr).each(function(i,obj){#}
+{#        console.log(i,obj.name)#}
+{#    })#}
+{#    $.each(arr,function(){})#}
+    $(function(){
+        $('#btn').click(function(){
+            var xhr = createxhr();
+            xhr.open("get",'/08_server/',true);
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState==4&&xhr.status==200){
+                    var text = xhr.responseText;
+                    var text = JSON.parse(text);
+                    console.log(text);
+                    for(var i = 0;i<text.length;i++){
+                        $tr = $("<tr></tr>");
+                        $td1 = $("<td>"+text[i].pk+"</td>");
+                        $tr.append($td1);
+                        $td2 = $("<td>"+text[i].fields.uname+"</td>");
+                        $tr.append($td2);
+                        $td3 = $("<td>"+text[i].fields.upwd+"</td>");
+                        $tr.append($td3);
+                        $td4 = $("<td>"+text[i].fields.uphone+"</td>");
+                        $tr.append($td4);
+                        $td5 = $("<td>"+text[i].fields.uemail+"</td>");
+                        $tr.append($td5)
+                        $('#i1').append($tr);
+                    }
+
+                }
+            };
+            xhr.send(null)
+        })
+    })
+</script>
+
+</body>
+</html>
